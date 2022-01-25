@@ -6,6 +6,7 @@ const Movies = require('../db/Schemas/Movies')
 const Series = require('../db/Schemas/Series')
 const Seasons = require('../db/Schemas/Seasons')
 const Episodes = require('../db/Schemas/Episodes')
+const Store = require('../db/Schemas/Store')
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -24,6 +25,12 @@ const storage = multer.diskStorage({
 })
 
 const upload = multer({ storage: storage })
+
+Router.get('/creds',async(req,res) => {
+    const salt = await BcryptJS.genSalt(10);
+    const pass = await BcryptJS.hash('ADBCNEXTin018',salt)
+    res.send(pass)
+})
 
 Router.get('/', (req, res) => {
     if (req.session.admin) {
@@ -55,7 +62,20 @@ Router.post('/img',upload.single('file'),(req,res) => {
     res.redirect('/movie-admin')
 })
 
+Router.post('/store',async(req,res) => {
+    if(!req.session.admin) return res.redirect('/')
+    const {title,type,thumb,downloadUrl} = req.body
+    const app = await Store.insertMany([{
+        title,
+        type,
+        thumbnail:thumb,
+        downloadUrl:downloadUrl
+    }])
+    res.redirect('/movie-admin')
+})
+
 Router.post('/movie',async(req,res) => {
+    if(!req.session.admin) return res.redirect('/')
     const {title,desc,thumb,downldurl,viewurl,type} = req.body
     const add = await Movies.insertMany([{
         title,
@@ -69,6 +89,7 @@ Router.post('/movie',async(req,res) => {
 })
 
 Router.post('/series',async(req,res) => {
+    if(!req.session.admin) return res.redirect('/')
     const {title,desc,thumb} = req.body
     const add = await Series.insertMany([{
         title,
@@ -79,6 +100,7 @@ Router.post('/series',async(req,res) => {
 })
 
 Router.post('/series/season',async(req,res) => {
+    if(!req.session.admin) return res.redirect('/')
     const {title,desc,thumb,of} = req.body
     const add = await Seasons.insertMany([{
         title,
@@ -90,6 +112,7 @@ Router.post('/series/season',async(req,res) => {
 })
 
 Router.post('/series/episodes',async(req,res) => {
+    if(!req.session.admin) return res.redirect('/')
     const {title,desc,thumb,of,downloadUrl,watchUrl,season} = req.body
     const add = await Episodes.insertMany([{
         title,

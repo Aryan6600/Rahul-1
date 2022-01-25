@@ -7,6 +7,8 @@ const session = require('express-session')
 const Series = require("./db/Schemas/Series")
 const Seasons = require('./db/Schemas/Seasons')
 const Episodes = require('./db/Schemas/Episodes')
+const Store = require('./db/Schemas/Store')
+
 
 app.set('view engine','pug')
 
@@ -14,13 +16,8 @@ app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
 app.use(session({
-    // It holds the secret key for session
     secret: 'iAmTHeKinG',
-    // Forces the session to be saved
-    // back to the session store
     resave: true,
-    // Forces a session that is "uninitialized"
-    // to be saved to the store
     saveUninitialized: true
 }))
 
@@ -37,6 +34,19 @@ app.get('/search',async(req,res) => {
     const series = await Series.find(query)
     res.render('search',{movies,series})
 })
+
+app.get('/store',async(req,res) => {
+    const apps = await Store.find({})
+    res.render('store',{items:apps})
+})
+
+app.get('/store/search',async(req,res) => {
+    const q = req.query.q
+    const query = { $text: { $search: q.toString() } };
+    const apps = await Store.find(query)
+    res.render('store',{items:apps})
+})
+
 
 app.get('/movies',(req,res) => {
     res.render('movies')
@@ -55,13 +65,25 @@ app.get('/hollywood',async(req,res) => {
 app.get('/bollywood/:id',async(req,res) => {
     const id = req.params.id
     try {
-        const movie = await Movies.findOne({_id:id})
+        const movie = await Movies.findOne({_id:id,type:"Bollywood"})
         if(!movie) return res.redirect('/bollywood')
         res.render('middle',{download:movie.downloadPath,view:movie.viewPath})
     } catch (error) {
         res.send('Internal Server Error')
     }
 })
+
+app.get('/hollywood/:id',async(req,res) => {
+    const id = req.params.id
+    try {
+        const movie = await Movies.findOne({_id:id,type:"Hollywood"})
+        if(!movie) return res.redirect('/hollywood')
+        res.render('middle',{download:movie.downloadPath,view:movie.viewPath})
+    } catch (error) {
+        res.send('Internal Server Error')
+    }
+})
+
 
 app.get('/series',async(req,res) => {
     const series = await Series.find({})

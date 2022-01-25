@@ -49,3 +49,11 @@ html(lang="en")
                     input.path(type="text", name="of" placeholder="To Series")
                     input.path(type="text", name="season" placeholder="to Season ")
                     input.btn(type="submit", value="Upload")
+            .s2
+                h1 Add app to Store
+                form(action="store" method="POST").wrapper
+                    input.title(type="text", name="title" placeholder="App Title")
+                    input.desc(type="text", name="type" placeholder="App Type")
+                    input.thumb(type="text", name="thumb" placeholder="App Thumbnail Image name with extension")
+                    input.path(type="text", name="downloadUrl" placeholder="App download url with extension")
+                    input.btn(type="submit", value="Upload")
