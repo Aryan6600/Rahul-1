@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+.container{
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border: 1px solid lightgray;
+    min-height: 100vh;
+}
+.s{
+    border-bottom: 1px solid lightgray;
+    padding: 20px 10px;
+}
+.s h1{
+    font-weight: normal;
+    font-size: 1.5em;
+    padding: 10px;
+}
+.s .wrapper{
+    width: 100%;
+    display: flex;
+}
+.s .wrapper .file{
+    padding: 10px 20px;
+    border: 1px solid lightgray;
+    width: 100%;
+    border-radius: 50px;
+}
+.s .wrapper .btn{
+    padding: 10px 20px;
+    margin-left: 10px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+}
+.s2 h1{
+    font-weight: normal;
+    font-size: 1.5em;
+    padding: 10px;
+}
+.s2{
+    padding: 20px 10px;
+}
+.s2 .wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.s2 .wrapper input[type="text"]{
+    width: 100%;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border-radius: 50px;
+    border: 1px solid lightgray;
+    outline: none;
+}
+.s2 .wrapper .btn{
+    padding: 10px 20px;
+    margin-left: 10px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(23, 110, 209);
+    color: white;
+}

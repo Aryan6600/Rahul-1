@@ -1,0 +1,55 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/dist/css/watch.css")
+        script(src="/dist/js/1.js" defer) 
+        title Watch | 
+    body 
+        nav#navbar.navbar.shadow-on-scroll
+                h1.navbar-brand Aryan
+                .navbar-toggler(data-toggle='nav')
+                    .line
+                    .line
+                    .line
+                #nav.collapse
+                    ul.navbar-nav
+                        li
+                            a(href='/') Home
+                        li
+                            a.btn.modal-toggler(data-toggle='appointment') Buy
+        
+        .container 
+            <video width="100%" controls>
+                source(src="/dist/movies/"+movie.path type="video/mp4")
+                |Your browser does not support the video tag.
+            </video>
+            .details 
+                .left 
+                    h1.title=movie.title
+                    p.desc=movie.description
+                .right 
+                    h1 More Bollywood 
+                    .column 
+                        .card 
+                            img(src="https://images.unsplash.com/photo-1642887896990-e28491a8b5b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60", alt="")
+                            dic.card-content 
+                                h2 Movie Title 
+                                p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea, quia.
+                        .card 
+                            img(src="https://images.unsplash.com/photo-1642887896990-e28491a8b5b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60", alt="")
+                            dic.card-content 
+                                h2 Movie Title 
+                                p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea, quia.
+                        .card 
+                            img(src="https://images.unsplash.com/photo-1642887896990-e28491a8b5b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60", alt="")
+                            dic.card-content 
+                                h2 Movie Title 
+                                p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea, quia.
+                        .card 
+                            img(src="https://images.unsplash.com/photo-1642887896990-e28491a8b5b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60", alt="")
+                            dic.card-content 
+                                h2 Movie Title 
+                                p Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea, quia.

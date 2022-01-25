@@ -1,0 +1,37 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/dist/css/main.css")
+        title Welcome |
+    body
+        nav#navbar.navbar.shadow-on-scroll
+            h1.navbar-brand Aryan
+            .navbar-toggler(data-toggle='nav')
+                .line
+                .line
+                .line
+            #nav.collapse
+                ul.navbar-nav
+                    li
+                        a(href='#') Home
+                    li
+                        a.btn.modal-toggler(data-toggle='appointment') Buy
+        .content 
+            .grid 
+                .card   
+                    h1 Movies 
+                    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati consectetur praesentium asperiores omnis provident illum blanditiis nesciunt! Odit, id rem.
+                    a(href="/movies").btn Browse Movies
+                .card   
+                    h1 App Store 
+                    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati consectetur praesentium asperiores omnis provident illum blanditiis nesciunt! Odit, id rem.
+                    a(href="#store").btn App Store
+                .card   
+                    h1 Social Services 
+                    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati consectetur praesentium asperiores omnis provident illum blanditiis nesciunt! Odit, id rem.
+                    a(href="#buy").btn Purchase Premium
+
+        script(src="/dist/js/1.js") 

@@ -1,0 +1,51 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/dist/css/admin-dash.css")
+        title Welcome Admin
+    body 
+        .container 
+            .s 
+                h1 Add Images 
+                form(action="img" method="POST" enctype="multipart/form-data").wrapper
+                    input.file(type="file", name="file")
+                    input.btn(type="submit", value="Upload")
+            .s2
+                h1 Add a New Movie
+                form(action="movie" method="POST").wrapper
+                    input.title(type="text", name="title" placeholder="Movie Title")
+                    input.desc(type="text", name="desc" placeholder="Movie Description")
+                    input.thumb(type="text", name="thumb" placeholder="Movie Thumbnail Image name with extension")
+                    input.path(type="text", name="downldurl" placeholder="Movie cloud file download url")
+                    input.path(type="text", name="viewurl" placeholder="Movie cloud file watching url")
+                    input.path(type="text", name="type" placeholder="Bollywood Or Hollywood")
+                    input.btn(type="submit", value="Upload")
+            .s2
+                h1 Start A new Series
+                form(action="series" method="POST").wrapper
+                    input.title(type="text", name="title" placeholder="Series Title")
+                    input.desc(type="text", name="desc" placeholder="Series Description")
+                    input.thumb(type="text", name="thumb" placeholder="Series Thumbnail Image name with extension")
+                    input.btn(type="submit", value="Upload")
+            .s2
+                h1 Add Season to a Series
+                form(action="series/season" method="POST").wrapper
+                    input.title(type="text", name="title" placeholder="Season Title")
+                    input.desc(type="text", name="desc" placeholder="Season Description")
+                    input.thumb(type="text", name="thumb" placeholder="Season Thumbnail Image name with extension")
+                    input.path(type="text", name="of" placeholder="Of Series")
+                    input.btn(type="submit", value="Upload")
+            .s2
+                h1 Add episodes to a Series
+                form(action="series/episodes" method="POST").wrapper
+                    input.title(type="text", name="title" placeholder="Episode Title")
+                    input.desc(type="text", name="desc" placeholder="Episode Description")
+                    input.thumb(type="text", name="thumb" placeholder="Episode Thumbnail Image name with extension")
+                    input.path(type="text", name="downloadUrl" placeholder="Episode download url")
+                    input.path(type="text", name="watchUrl" placeholder="Episode watching url ")
+                    input.path(type="text", name="of" placeholder="To Series")
+                    input.path(type="text", name="season" placeholder="to Season ")
+                    input.btn(type="submit", value="Upload")
