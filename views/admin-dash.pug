@@ -11,7 +11,12 @@ html(lang="en")
             .s 
                 h1 Add Images 
                 form(action="img" method="POST" enctype="multipart/form-data").wrapper
-                    input.file(type="file", name="file")
+                    input.file(type="file", name="file" accept=".jpg,.png.jfif,.webp,.jpeg.svg")
+                    input.btn(type="submit", value="Upload")
+            .s 
+                h1 Upload Application file 
+                form(action="store/apk" method="POST" enctype="multipart/form-data").wrapper
+                    input.file(type="file", name="apk" accept=".apk")
                     input.btn(type="submit", value="Upload")
             .s2
                 h1 Add a New Movie
@@ -56,4 +61,5 @@ html(lang="en")
                     input.desc(type="text", name="type" placeholder="App Type")
                     input.thumb(type="text", name="thumb" placeholder="App Thumbnail Image name with extension")
                     input.path(type="text", name="downloadUrl" placeholder="App download url with extension")
+                    input.path(type="text", name="desc" placeholder="App Loing Description")
                     input.btn(type="submit", value="Upload")

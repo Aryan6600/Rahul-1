@@ -40,6 +40,11 @@ app.get('/store',async(req,res) => {
     res.render('store',{items:apps})
 })
 
+app.get('/store/item/:id',async(req,res) => {
+    const app = await Store.findOne({_id:req.params.id})
+    res.render('store-item',{app:app})
+})
+
 app.get('/store/search',async(req,res) => {
     const q = req.query.q
     const query = { $text: { $search: q.toString() } };

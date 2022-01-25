@@ -16,6 +16,10 @@ const s6 = mongoose.Schema({
     downloadUrl:{
         type:String,
         required:true,
+    },
+    description:{
+        type:String,
+        required:true,
     }
 })
 

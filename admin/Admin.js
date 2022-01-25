@@ -24,7 +24,24 @@ const storage = multer.diskStorage({
     }
 })
 
+const Apkstorage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './dist/apks')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname)
+    },
+    fileFilter:function(req,file,cb){
+        if(req.session.admin){
+            cb(null,true)
+        }else{
+            cb(null,true)
+        }
+    }
+})
+
 const upload = multer({ storage: storage })
+const Apkupload = multer({ storage: Apkstorage })
 
 Router.get('/creds',async(req,res) => {
     const salt = await BcryptJS.genSalt(10);
@@ -59,18 +76,25 @@ Router.get('/dashboard', (req, res) => {
 })
 
 Router.post('/img',upload.single('file'),(req,res) => {
+    if(!req.session.admin) return res.redirect('/')
     res.redirect('/movie-admin')
 })
 
 Router.post('/store',async(req,res) => {
     if(!req.session.admin) return res.redirect('/')
-    const {title,type,thumb,downloadUrl} = req.body
+    const {title,type,thumb,downloadUrl,desc} = req.body
     const app = await Store.insertMany([{
         title,
         type,
         thumbnail:thumb,
-        downloadUrl:downloadUrl
+        downloadUrl:downloadUrl,
+        description:desc
     }])
+    res.redirect('/movie-admin')
+})
+
+Router.post('/store/apk',Apkupload.single('apk'),async(req,res) => {
+    if(!req.session.admin) return res.redirect('/')
     res.redirect('/movie-admin')
 })
 

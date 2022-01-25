@@ -4,12 +4,12 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet", href="/dist/css/store.css")
+        link(rel="stylesheet", href="/dist/css/sitem.css")
         title Document
     body 
         form(action='/store/search' method="GET").search 
-                input(type="text", name="q" placeholder="Search Anything")
-                input(type="submit", value="Search").button
+                    input(type="text", name="q" placeholder="Search Anything")
+                    input(type="submit", value="Search").button
         nav#navbar.navbar.shadow-on-scroll
             h1.navbar-brand Aryan
             .navbar-toggler(data-toggle='nav')
@@ -22,14 +22,15 @@ html(lang="en")
                         a(href='/') Home
                     li
                         a.btn.modal-toggler(data-toggle='appointment') Buy
+
         .content 
-            h1  Browse Apps 
-            .grid 
-                each item in items
-                    a(href="/store/item/"+item._id target="_blank").card
-                        img(src="/dist/img/"+item.thumbnail, alt="")
-                        .card-content 
-                            h2=item.title
-                            span=item.type
-                
+            .top 
+                img(src="/dist/img/"+app.thumbnail, alt="")
+                .top-content 
+                    h2=app.title
+                    span=app.type
+                    a.btn(href=app.downloadUrl target="blank") Download 
+            .bottom 
+                h2 About the Application
+                p=app.description 
         script(src="/dist/js/1.js") 
