@@ -3,7 +3,7 @@ const mongoose = require('../conn')
 const s1 = mongoose.Schema({
     title:{
         type:String,
-        required:true
+        required:true,
     },
     description:{
         type:String,
@@ -26,6 +26,8 @@ const s1 = mongoose.Schema({
         required:true
     }
 })
+
+s1.index({title:"text"})
 
 const Movies = mongoose.model('movies',s1)
 

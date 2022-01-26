@@ -3,7 +3,8 @@ const mongoose = require('../conn')
 const s3 = mongoose.Schema({
     title:{
         type:String,
-        required:true
+        required:true,
+        index:true
     },
     description:{
         type:String,
@@ -14,6 +15,8 @@ const s3 = mongoose.Schema({
         required:true
     }
 })
+
+s3.index({title:"text"})
 
 const Series = mongoose.model('series',s3)
 

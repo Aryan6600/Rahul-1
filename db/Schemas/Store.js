@@ -3,7 +3,8 @@ const mongoose = require('../conn')
 const s6 = mongoose.Schema({
     title:{
         type:String,
-        required:true
+        required:true,
+        index:true,
     },
     type:{
         type:String,
@@ -22,6 +23,8 @@ const s6 = mongoose.Schema({
         required:true,
     }
 })
+
+s6.index({title:"text"})
 
 const Store = mongoose.model('store',s6)
 
