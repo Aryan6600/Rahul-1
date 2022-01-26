@@ -43,11 +43,6 @@ const Apkstorage = multer.diskStorage({
 const upload = multer({ storage: storage })
 const Apkupload = multer({ storage: Apkstorage })
 
-Router.get('/creds',async(req,res) => {
-    const salt = await BcryptJS.genSalt(10);
-    const pass = await BcryptJS.hash('ADBCNEXTin018',salt)
-    res.send(pass)
-})
 
 Router.get('/', (req, res) => {
     if (req.session.admin) {
